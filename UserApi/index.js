@@ -4,7 +4,6 @@ const { json } = require('stream/consumers')
 const server = http.createServer((req, res) => {
     if (req.url == '/') {
         fs.readFile(`${(__dirname)}/users.json`, 'utf8', function (err, data) {
-            console.log(data);
             res.end(data);
         });
     }
@@ -19,7 +18,7 @@ const server = http.createServer((req, res) => {
         }
         fs.readFile(`${(__dirname)}/users.json`, 'utf8', function (err, data) {
             data = JSON.parse(data);
-            
+
             data["user4"] = user["user4"];
             console.log(data);
             res.end(JSON.stringify(data));
@@ -28,5 +27,5 @@ const server = http.createServer((req, res) => {
 
 
 }).listen(3000, function () {
-    console.log('ff')
+    console.log("server running on 3000")
 })
